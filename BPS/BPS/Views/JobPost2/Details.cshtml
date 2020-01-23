@@ -1,0 +1,107 @@
+﻿@model BPS.Models.Job_Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Job_Post</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Land_Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land_Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Building_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuildingType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuildingType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location1.Location1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location1.Location1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType.SerType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.SerType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

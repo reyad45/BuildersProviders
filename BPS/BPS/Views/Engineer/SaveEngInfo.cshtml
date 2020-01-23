@@ -1,0 +1,161 @@
+﻿@using BPS.Models
+@model BPS.Models.Engineer
+
+@{
+    ViewBag.Title = "SaveEngInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="headingStyle">
+    <span class="top right"></span>
+    <span class="top left"></span>
+    <h2 class="text-center">Engineer Profile Registration Form</h2>
+    <span class="bottom right"></span>
+    <span class="bottom left"></span>
+</div>
+<div class="login-form">
+    <form  method="POST" class="wow slideInDown" data-wow-duration="2s" data-wow-offset="0">
+
+        
+
+        <div class="form-horizontal">
+           
+            <hr />
+            @Html.ValidationSummary(true)
+            <!--------------Client User Create---------------------->
+            <div class="row from-group">
+                <h3 class="text-primary">Engineer Account Information</h3>
+            </div>
+            <div class="row from group">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.RePassword)
+                    @Html.PasswordFor(model => model.RePassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RePassword)
+                </div>
+            </div>
+            <hr />
+
+            <!--------------------------------------------------Details Engineer----------------------------------------------------->
+            <div class="row from-group">
+                <h3 class="text-primary">Engineer Details Information</h3>
+            </div>
+            <!---name--->
+            <div class="row form-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.engName)
+                    @Html.TextBoxFor(model => model.engName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.engName)
+                </div>
+    
+            <!---Email--->
+                <div class="col-md-4">
+
+                    @Html.LabelFor(model => model.engEmail)
+                    @Html.TextBoxFor(model => model.engEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.engEmail)
+                </div>
+                
+                <!---Contact--->
+                   <div class="col-md-4">
+                        @Html.LabelFor(model => model.engContact)
+                        @Html.TextBoxFor(model => model.engContact, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.engContact)
+                    </div>
+             </div>
+                    <!---About--->
+            <!-------------------------------------------------2nd Row---------------------------------->
+            <div class="form-group row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.engGender)
+
+                    Male
+                    @Html.RadioButtonFor(model => model.engGender, "Male")
+                    Female
+                    @Html.RadioButtonFor(model => model.engGender, "Female")
+                    @Html.ValidationMessageFor(model => model.engGender)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.engExperience)
+                    @Html.TextBoxFor(model => model.engExperience, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.engExperience)
+                </div>
+                   <!---Country--->
+             
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.engCountry)
+                        @Html.TextBoxFor(model => model.engCountry, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.engCountry)
+                    </div>
+           </div>
+                <!---Gender--->
+            <!-------------------------------------------------2nd Row---------------------------------->
+                <div class="form-group row">
+                    
+                    
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.engAbout)
+                        @Html.TextAreaFor(model => model.engAbout, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.engAbout)
+                    </div>
+
+                    <!---Adress--->
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.engAdress)
+                        @Html.TextAreaFor(model => model.engAdress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.engAdress)
+                    </div>
+                    
+
+                @*<div class="form-group">
+                @Html(model => model.engPicture, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.engPicture)
+                    @Html.ValidationMessageFor(model => model.engPicture)
+                </div>
+            </div>*@
+                <!---Details--->
+               
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.engDetails)
+                
+                        @Html.TextAreaFor(model => model.engDetails, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.engDetails)
+                    </div>
+               
+
+                <!---Experience--->
+                   
+                </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-md-4 text-right"></div>
+                <div class=" col-md-2 text-right ">
+                    <br />
+                    <input type="submit" value="Create Account" class="btn btn-default btn-primary" style="width:300px;" />
+                </div>
+                <label class="label label-success">@ViewBag.Message</label>
+            </div>
+            </div>
+
+
+</form>
+</div>
+    
+    <div>
+        @Html.ActionLink("Back to Home Page", "Index", "Home")
+    </div>

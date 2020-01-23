@@ -1,0 +1,88 @@
+﻿@model BPS.Models.Job_Post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Job_Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Building_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Land_Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land_Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuildingType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuildingType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location1.Location1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location1.Location1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType.SerType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.SerType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

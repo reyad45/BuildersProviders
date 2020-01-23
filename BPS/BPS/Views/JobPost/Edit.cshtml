@@ -1,0 +1,102 @@
+﻿@model BPS.Models.Job_Post
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/JobPost.css" rel="stylesheet" />
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 class="text-center">EDIT JOB POST</h2>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="row">
+            <div class="col-25">
+                <label>Building Name</label>
+            </div>
+
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Building_Name)
+                @Html.ValidationMessageFor(model => model.Building_Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Building Type</label>
+            </div>
+            <div class="col-75">
+                @Html.DropDownList("build_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.build_id)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Service Type</label>
+            </div>
+            <div class="col-75">
+                @Html.DropDownList("Ser_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.Ser_id)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Land Size</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Land_Size)
+                @Html.ValidationMessageFor(model => model.Land_Size)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Description</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Address</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Proposed Salary</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Price)
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-50">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

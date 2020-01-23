@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JobPostModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Job_Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Building_Name" Type="varchar" MaxLength="200" />
+          <Property Name="build_id" Type="int" />
+          <Property Name="Ser_id" Type="int" />
+          <Property Name="Land_Size" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="400" />
+          <Property Name="Location" Type="int" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+          <Property Name="LocID" Type="int" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="LocationName" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Contact_Number" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Job_Post_BuildingType">
+          <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="0..1" />
+          <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="build_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Post_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Post_ServiceType">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+          <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="Ser_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JobPostModelStoreContainer">
+          <EntitySet Name="BuildingType" EntityType="Self.BuildingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job_Post" EntityType="Self.Job_Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Job_Post_BuildingType" Association="Self.FK_Job_Post_BuildingType">
+            <End Role="BuildingType" EntitySet="BuildingType" />
+            <End Role="Job_Post" EntitySet="Job_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Post_Location" Association="Self.FK_Job_Post_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Job_Post" EntitySet="Job_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Post_ServiceType" Association="Self.FK_Job_Post_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="Job_Post" EntitySet="Job_Post" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JobPostModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Job_Post" Relationship="Self.FK_Job_Post_BuildingType" FromRole="BuildingType" ToRole="Job_Post" />
+        </EntityType>
+        <EntityType Name="Job_Post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="build_id" Type="Int32" />
+          <Property Name="Ser_id" Type="Int32" />
+          <Property Name="Land_Size" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Description" MaxLength="400" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Location" Type="Int32" />
+          <Property Name="Price" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LocID" Type="Int32" />
+          <NavigationProperty Name="BuildingType" Relationship="Self.FK_Job_Post_BuildingType" FromRole="Job_Post" ToRole="BuildingType" />
+          <NavigationProperty Name="Location1" Relationship="Self.FK_Job_Post_Location" FromRole="Job_Post" ToRole="Location" />
+          <NavigationProperty Name="ServiceType" Relationship="Self.FK_Job_Post_ServiceType" FromRole="Job_Post" ToRole="ServiceType" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="Address" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Building_Name" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LocationName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="Location1" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <NavigationProperty Name="Job_Post" Relationship="Self.FK_Job_Post_Location" FromRole="Location" ToRole="Job_Post" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Job_Post" Relationship="Self.FK_Job_Post_ServiceType" FromRole="ServiceType" ToRole="Job_Post" />
+        </EntityType>
+        <Association Name="FK_Job_Post_BuildingType">
+          <End Type="Self.BuildingType" Multiplicity="0..1" Role="BuildingType" />
+          <End Type="Self.Job_Post" Multiplicity="*" Role="Job_Post" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="build_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Post_Location">
+          <End Type="Self.Location" Multiplicity="0..1" Role="Location" />
+          <End Type="Self.Job_Post" Multiplicity="*" Role="Job_Post" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Post_ServiceType">
+          <End Type="Self.ServiceType" Multiplicity="0..1" Role="ServiceType" />
+          <End Type="Self.Job_Post" Multiplicity="*" Role="Job_Post" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Job_Post">
+              <PropertyRef Name="Ser_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BuildersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuildingTypes" EntityType="Self.BuildingType" />
+          <EntitySet Name="Job_Post" EntityType="Self.Job_Post" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="ServiceTypes" EntityType="Self.ServiceType" />
+          <AssociationSet Name="FK_Job_Post_BuildingType" Association="Self.FK_Job_Post_BuildingType">
+            <End EntitySet="BuildingTypes" Role="BuildingType" />
+            <End EntitySet="Job_Post" Role="Job_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Post_Location" Association="Self.FK_Job_Post_Location">
+            <End EntitySet="Locations" Role="Location" />
+            <End EntitySet="Job_Post" Role="Job_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Post_ServiceType" Association="Self.FK_Job_Post_ServiceType">
+            <End EntitySet="ServiceTypes" Role="ServiceType" />
+            <End EntitySet="Job_Post" Role="Job_Post" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="ComplexType1">
+          <Property Type="String" Name="Location2" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JobPostModelStoreContainer" CdmEntityContainer="BuildersEntities">
+          <EntitySetMapping Name="BuildingTypes">
+            <EntityTypeMapping TypeName="JobPostModel.BuildingType">
+              <MappingFragment StoreEntitySet="BuildingType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job_Post">
+            <EntityTypeMapping TypeName="JobPostModel.Job_Post">
+              <MappingFragment StoreEntitySet="Job_Post">
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Building_Name" ColumnName="Building_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="build_id" ColumnName="build_id" />
+                <ScalarProperty Name="Ser_id" ColumnName="Ser_id" />
+                <ScalarProperty Name="Land_Size" ColumnName="Land_Size" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="LocID" ColumnName="LocID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="JobPostModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Location1" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="JobPostModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SerType" ColumnName="SerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

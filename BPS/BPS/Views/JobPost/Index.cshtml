@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BPS.Models.Job_Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/JobPost.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Building Name
+        </th>
+        <th>
+            Building Type
+        </th>
+        <th>
+            Service Type
+        </th>
+        <th>
+           Land Size
+        </th>
+        
+        <th>
+           Salary
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuildingType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.ServiceType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Land_Size)
+        </td>
+  
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

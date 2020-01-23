@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JobPostModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BuildingType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Job_Post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Building_Name" Type="varchar" MaxLength="200" />
+    <Property Name="build_id" Type="int" />
+    <Property Name="Ser_id" Type="int" />
+    <Property Name="Land_Size" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="varchar" MaxLength="400" />
+    <Property Name="Location" Type="int" />
+    <Property Name="Price" Type="varchar" MaxLength="50" />
+    <Property Name="LocID" Type="int" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="LocationName" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Contact_Number" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Job_Post_BuildingType">
+    <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="0..1" />
+    <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuildingType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Job_Post">
+        <PropertyRef Name="build_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_Post_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Job_Post">
+        <PropertyRef Name="LocID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_Post_ServiceType">
+    <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+    <End Role="Job_Post" Type="Self.Job_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Job_Post">
+        <PropertyRef Name="Ser_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JobPostModelStoreContainer">
+    <EntitySet Name="BuildingType" EntityType="Self.BuildingType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job_Post" EntityType="Self.Job_Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Job_Post_BuildingType" Association="Self.FK_Job_Post_BuildingType">
+      <End Role="BuildingType" EntitySet="BuildingType" />
+      <End Role="Job_Post" EntitySet="Job_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_Post_Location" Association="Self.FK_Job_Post_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="Job_Post" EntitySet="Job_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_Post_ServiceType" Association="Self.FK_Job_Post_ServiceType">
+      <End Role="ServiceType" EntitySet="ServiceType" />
+      <End Role="Job_Post" EntitySet="Job_Post" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

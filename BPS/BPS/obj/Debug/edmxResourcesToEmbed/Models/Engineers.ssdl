@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BuildersModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Engineer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="engName" Type="varchar" MaxLength="50" />
+    <Property Name="engEmail" Type="varchar" MaxLength="50" />
+    <Property Name="engContact" Type="nvarchar" MaxLength="15" />
+    <Property Name="engAbout" Type="varchar" MaxLength="500" />
+    <Property Name="engAdress" Type="varchar" MaxLength="150" />
+    <Property Name="engCountry" Type="varchar" MaxLength="50" />
+    <Property Name="engGender" Type="varchar" MaxLength="50" />
+    <Property Name="engPicture" Type="image" />
+    <Property Name="engDetails" Type="varchar" MaxLength="500" />
+    <Property Name="engProfile" Type="varchar" MaxLength="50" />
+    <Property Name="engExperience" Type="varchar" MaxLength="50" />
+    <Property Name="engEntryBy" Type="varchar" MaxLength="50" />
+    <Property Name="engEntryDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityContainer Name="BuildersModel1StoreContainer">
+    <EntitySet Name="Engineer" EntityType="Self.Engineer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

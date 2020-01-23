@@ -1,0 +1,90 @@
+﻿@model BPS.Models.Job_Post
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bid Job</h4>
+	<hr />
+  
+
+    <dl class="dl-horizontal">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        <dt>
+            Building Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model=>model.Building_Name)
+        </dd>
+
+        <dt>
+            Building Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuildingType.Type)
+        </dd>
+
+        <dt>
+            Service Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.SerType)
+        </dd>
+        <dt>
+            Land Size
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land_Size)
+        </dd>
+
+        <dt>
+           Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            Salary
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    
+        <dt>
+           
+
+        </dt>
+
+        <dd>
+            <input type="Submit" value="Apply Online" class="btn btn-success text-center" style="margin-left:350px"/>
+        </dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

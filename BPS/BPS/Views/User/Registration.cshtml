@@ -1,0 +1,107 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Web.Mvc.Html
+@model BRS.Models.RegisterView
+
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/login.css" rel="stylesheet" />
+
+<style>
+    .dropdown-menu {
+        width: 300px !important;
+        
+    }
+</style>
+
+@*<div class="headingStyle" style="margin-top:200px">
+        <span class="top right"></span>
+        <span class="top left"></span>
+        <h2>User Registration</h2>
+        <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+        <hr />
+        <span class="bottom right"></span>
+        <span class="bottom left"></span>
+    </div>*@
+
+
+@using (Html.BeginForm("Registration", "User", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width frmbordar", role = "form" }))
+{
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="contact_image">
+
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="contact_form_container">
+                    <h2 class="contact_title text-center">Registration</h2>
+                    <div class="text-center text-primary font-weight-bold text-uppercase"><h2>@ViewBag.Message</h2></div>
+
+                    @*<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="User Name" required="required" data-error="Name is required.">
+                        <input type="password" id="contact_form_email" class="contact_form_email input_field" placeholder="Password" required="required" data-error="Email is required.">*@
+                    <div style="padding-left:100px">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(a => a.userRole, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9 ">
+                                @Html.DropDownListFor(a => a.Id, new SelectList(ViewBag.GetRole, "Id", "RoleName"), "---Select----", new {style = "width: 350px; height: 35px;", @class = " contact_form_email input_field" })
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="form-group row">
+                            <div class="col-md-3">
+
+                                @Html.LabelFor(a => a.UserName, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(a => a.UserName, new { style = "width: 350px; height: 35px;", @class = "contact_form_email input_field", placeholder = "Enter User Name" })
+                                @Html.ValidationMessageFor(a=>a.userRole)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <br />
+                                @Html.LabelFor(a => a.Password, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.PasswordFor(a => a.Password, new { style = "width: 350px; height: 35px;", @class = "contact_form_email input_field", placeholder = "Enter Password" })
+                                @Html.ValidationMessageFor(a=>a.Password)
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <br />
+                                @Html.LabelFor(a => a.ConfirmPassword, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.PasswordFor(a => a.ConfirmPassword, new { style = "width: 350px; height: 35px;", @class = "contact_form_email input_field", placeholder = "Enter Confirm Password" })
+                                @Html.ValidationMessageFor(a=>a.ConfirmPassword)
+                            </div>
+                        </div>
+                        @*<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>*@
+
+                        <div class="form-group row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9">
+                                <button type="submit" id="form_submit_button" style="width: 350px" class="btn btn-block btn-primary">Create<span></span><span></span><span></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+

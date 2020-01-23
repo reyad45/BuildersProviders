@@ -1,0 +1,160 @@
+﻿@using BPS.Models
+@model BPS.Models.Supplier
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="headingStyle">
+    <span class="top right"></span>
+    <span class="top left"></span>
+    <h2 class="text-center">Supplier Profile Registration Form</h2>
+    <span class="bottom right"></span>
+    <span class="bottom left"></span>
+</div>
+<div class="login-form">
+    <form method="POST" class="wow slideInDown" data-wow-duration="2s" data-wow-offset="0">
+
+
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true)
+            <!--------------Client User Create---------------------->
+            <div class="row from-group">
+                <h3 class="text-primary">Supplier Account Information</h3>
+            </div>
+            <div class="row from group">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.UserName)
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.Password)
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.RePassword)
+                    @Html.PasswordFor(model => model.RePassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RePassword)
+                </div>
+            </div>
+            <hr />
+
+            <!--------------------------------------------------Details Engineer----------------------------------------------------->
+            <div class="row from-group">
+                <h3 class="text-primary">Supplier Details Information</h3>
+            </div>
+            <!---name--->
+            <div class="row form-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.SupName)
+                    @Html.TextBoxFor(model => model.SupName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SupName)
+                </div>
+
+                <!---Email--->
+                <div class="col-md-4">
+
+                    @Html.LabelFor(model => model.supEmail)
+                    @Html.TextBoxFor(model => model.supEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supEmail)
+                </div>
+
+                <!---Contact--->
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supContact)
+                    @Html.TextBoxFor(model => model.supContact, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supContact)
+                </div>
+            </div>
+            <!---About--->
+            <!-------------------------------------------------2nd Row---------------------------------->
+            <div class="form-group row">
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supGender)
+
+                    Male
+                    @Html.RadioButtonFor(model => model.supGender, "Male")
+                    Female
+                    @Html.RadioButtonFor(model => model.supGender, "Female")
+                    @Html.ValidationMessageFor(model => model.supGender)
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supExperience)
+                    @Html.TextBoxFor(model => model.supExperience, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supExperience)
+                </div>
+                <!---Country--->
+
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supCountry)
+                    @Html.TextBoxFor(model => model.supCountry, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supCountry)
+                </div>
+            </div>
+            <!---Gender--->
+            <!-------------------------------------------------2nd Row---------------------------------->
+            <div class="form-group row">
+
+
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supAbout)
+                    @Html.TextAreaFor(model => model.supAbout, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supAbout)
+                </div>
+
+                <!---Adress--->
+
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supAdress)
+                    @Html.TextAreaFor(model => model.supAdress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supAdress)
+                </div>
+
+
+                @*<div class="form-group">
+                        @Html(model => model.engPicture, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.engPicture)
+                            @Html.ValidationMessageFor(model => model.engPicture)
+                        </div>
+                    </div>*@
+                <!---Details--->
+
+                <div class="col-md-4">
+                    @Html.LabelFor(model => model.supDetails)
+
+                    @Html.TextAreaFor(model => model.supDetails, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.supDetails)
+                </div>
+
+
+                <!---Experience--->
+
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-md-4 text-right"></div>
+                <div class=" col-md-2 text-right ">
+                    <br />
+                    <input type="submit" value="Create Account" class="btn btn-default btn-primary" style="width:300px;" />
+                </div>
+                <label class="label label-success">@ViewBag.Message</label>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Home Page", "Index", "Home")
+</div>

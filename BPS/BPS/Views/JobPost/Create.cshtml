@@ -1,0 +1,167 @@
+﻿@model BPS.Models.Job_Post
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@Styles.Render("~/styles/User")
+<style>
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border:1px solid #ccc;
+        border-radius:4px;
+        resize: vertical;
+
+    }
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    .container {
+        border-radius: 5px;
+       
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+        
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    .col-50 {
+       
+        width: 50%;
+        margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+</style>
+
+    <h2>Create</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <h4>Job Post</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+                <div class="row">
+            <div class="col-25">
+                
+
+                <label>Building Name</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Building_Name, new {placeholder = "Building name", required="required"})
+                @Html.ValidationMessageFor(model => model.Building_Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+
+               <label>Building Type</label>
+            </div>
+            <div class="col-75">
+                @Html.DropDownList("build_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.build_id)
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-25">
+                <label>Service Type</label>
+            </div>
+            <div class="col-75">
+                @Html.DropDownList("Ser_id", String.Empty)
+                @Html.ValidationMessageFor(model => model.Ser_id)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+               <label>Land Size</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Land_Size, new { placeholder = "Land Size", required = "required" })
+                @Html.ValidationMessageFor(model => model.Land_Size)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label>Description</label>
+            </div>
+            <div class="col-75">
+                @Html.TextAreaFor(model => model.Description, new { @cols = "40", @rows = "7", required = "required" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+               <label>Adddress</label>
+            </div>
+            <div class="col-75">
+                @Html.TextAreaFor(model => model.Address, new { @cols="40", @rows="3"})
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+               <label>Proposed Salary</label>
+            </div>
+            <div class="col-75">
+                @Html.TextBoxFor(model => model.Price, new { placeholder = "Proposed Salary", required = "required" })
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        </div>
+
+
+        <div class="row col-50">
+            <input type="submit" value="Submit" />
+        </div>
+
+
+    }
+
+    <div>
+        <br />
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

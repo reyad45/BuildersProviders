@@ -1,0 +1,98 @@
+﻿@model IEnumerable<BPS.Models.Engineer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SaveEngInfo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.engName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engContact)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.engAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engPicture)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.engProfile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engEntryBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.engEntryDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.engName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engContact)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.engAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engPicture)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.engProfile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engExperience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engEntryBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.engEntryDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

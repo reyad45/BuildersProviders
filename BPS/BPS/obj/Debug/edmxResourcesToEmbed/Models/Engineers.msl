@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BuildersModel1StoreContainer" CdmEntityContainer="EngineersEntities">
+    <EntitySetMapping Name="Engineers">
+      <EntityTypeMapping TypeName="BuildersModel1.Engineer">
+        <MappingFragment StoreEntitySet="Engineer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="engName" ColumnName="engName" />
+          <ScalarProperty Name="engEmail" ColumnName="engEmail" />
+          <ScalarProperty Name="engContact" ColumnName="engContact" />
+          <ScalarProperty Name="engAbout" ColumnName="engAbout" />
+          <ScalarProperty Name="engAdress" ColumnName="engAdress" />
+          <ScalarProperty Name="engCountry" ColumnName="engCountry" />
+          <ScalarProperty Name="engGender" ColumnName="engGender" />
+          <ScalarProperty Name="engPicture" ColumnName="engPicture" />
+          <ScalarProperty Name="engDetails" ColumnName="engDetails" />
+          <ScalarProperty Name="engProfile" ColumnName="engProfile" />
+          <ScalarProperty Name="engExperience" ColumnName="engExperience" />
+          <ScalarProperty Name="engEntryBy" ColumnName="engEntryBy" />
+          <ScalarProperty Name="engEntryDate" ColumnName="engEntryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

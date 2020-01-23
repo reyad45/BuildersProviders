@@ -1,0 +1,123 @@
+﻿@model BPS.Models.Engineer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Engineer</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.engName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engAbout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engAbout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engProfile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engProfile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engEntryBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engEntryBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engEntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engEntryDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

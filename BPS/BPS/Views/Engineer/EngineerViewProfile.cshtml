@@ -1,0 +1,111 @@
+﻿
+@model List<BPS.Models.Engineer>
+@{
+    ViewBag.Title = "EngineerViewProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EngineerViewProfile</h2>
+
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <!-- main body -->
+        <!-- ################################################################################################ -->
+<div class="content three_quarter first">
+    <!-- ################################################################################################ -->
+
+    <br><br>
+
+    @Html.ActionLink("Add Engineer Profile", "SaveEngInfo", "Engineer") <br><br>
+    <div class="linear-tiles-wrapper">
+        <div class="blog-post">
+            @{
+        foreach (var data in Model)
+        {
+
+
+            <h1> @data.engName</h1>
+                <header>
+                    <figure class="avatar"><img src="../images/ashique.png" alt=""></figure>
+                    <address>
+                        @data.engCountry <a href="#">@data.engEmail </a>||<a href=""> Building Estimation</a>
+                    </address>
+                    <h3>Structural Engineer, Estimator & CAD Drafter</h3>
+                    <i class="fa fa-phone" aria-hidden="true"><span>&nbsp;&nbsp;@data.engContact</span></i>
+                </header>
+
+                <p style="text-align: justify;">
+                    @data.engDetails
+                        <br>
+                </p>
+            <button type="submit" class="btn btn-primary btn-submit btn-Expand" id="show">Expand Profile</button>
+
+    <div id="ShowProfile" class="ShowProfile">
+
+        <p style="text-align: justify;">
+            @data.engAbout
+        </p>
+        <p style="text-align: justify;">
+            @data.engAdress
+        </p>
+        <label hidden>@data.id</label>
+        <br>
+    </div>
+
+
+
+        }
+    <hr>
+        }
+</div>   
+           
+        
+        
+                
+            
+
+    <div>
+        <h5 class="text-right">Last updated: Nov 16, 2019</h5>
+    </div>
+</div>
+    </main>
+    </div>
+
+
+
+            <!-- ################################################################################################ -->
+            <!-- / main body -->
+            <div class="clear"></div>
+
+             @Scripts.Render("~/bundles/bootstrap")
+
+
+
+            @Scripts.Render("~/bundles/jquery")
+            @section scripts
+            {
+
+                <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+                <script src="~/Scripts/jquery.dataTables.min.js"></script>
+                <script>
+                    var hideleng=false;
+                    $(document).ready(function () {
+                        $('#dataTable').DataTable({
+
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                            "pagingType": "full_numbers"
+                        });
+                        $("#ShowProfile").hide();
+                        $(".ShowProfile").hide();
+                        $("#show").click(function () {
+                            $(".ShowProfile").show();
+                        });
+                    });
+
+
+
+
+                 </script>
+        }
