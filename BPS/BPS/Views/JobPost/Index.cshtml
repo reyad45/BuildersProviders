@@ -10,53 +10,44 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Building Name
-        </th>
-        <th>
-            Building Type
-        </th>
-        <th>
-            Service Type
-        </th>
-        <th>
-           Land Size
-        </th>
-        
-        <th>
-           Salary
-        </th>
 
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Building_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BuildingType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem=>item.ServiceType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Land_Size)
-        </td>
-  
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-       
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
 
-</table>
+
+
+        @foreach (var item in Model)
+        {
+            
+        <div class="row">
+        <div class="col-sm-12">
+            <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <h3 class="job-preview">@Html.DisplayFor(modelItem => item.Building_Name)</h3>
+                <h4>
+                    @Html.DisplayFor(modelItem => item.ServiceType.SerType)
+                </h4>
+                <hr>
+                <p><span class="glyphicon glyphicon-map-marker">  &nbsp;@Html.DisplayFor(modelItem => item.Address)</span></p>
+                <p><span class="glyphicon glyphicon-education"> &nbsp;Bachelor of Science (BSc) in Civil Engineering</span></p>
+                <h5><span class="glyphicon glyphicon-briefcase"></span> &nbsp; &nbsp; &nbsp;1 to 3 year(s)  <p class="text-right"><span class="glyphicon glyphicon-calendar">&nbsp;Application Deadline: Feb 30, 2020</p></h5>
+                <a href="#" class=""> @Html.ActionLink("View Job", "Details", new { id = item.id })</a>
+
+            </div>
+        </div>
+            </div>
+               
+    
+
+                    if (Session["username"] != null || (string)(Session["username"]) != "")
+                    {
+                        int UserRole = Convert.ToInt16(Session["UserRole"]);
+                        if (UserRole == 1 || UserRole == 3)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        }
+                    }
+
+
+                    
+
+        }

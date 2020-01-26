@@ -108,13 +108,18 @@
                             <li class="scroll">@Html.ActionLink("Client Profile", "Profile", "Client")</li>
 
                         }
+                        if (UserRole == 1 || UserRole == 2|| UserRole == 3)
+                        {
+                             <li class="scroll ">@Html.ActionLink("Bid Job", "Index", "JobPost")</li>
+                        }
+                     
                     }
                                    
 
-                    <li class="scroll ">@Html.ActionLink("Bid Job", "Index", "JobPost")</li>
+                   
 
 
-                    <li class="scroll"><a href="#">Hire Engineer</a></li>
+                  
 
                     <li class="scroll"><a href="#">Contact</a></li>
                     @if (Session["username"] != null || (string)(Session["username"]) != "")
@@ -124,6 +129,12 @@
                         {
                             <li class="scroll">@Html.ActionLink("Create User", "Registration", "User")</li>
                         }
+                        
+                           if (UserRole == 1 || UserRole == 2 || UserRole == 3 || UserRole == 4)
+                        {
+                             <li class="scroll ">@Html.ActionLink("Log Out", "Login", "User")</li>
+                        }
+                        
                     }
                     @if (Session["username"] == null || (string)(Session["username"]) == "")
                     {

@@ -18,7 +18,7 @@ namespace BPS.Controllers
         private BuildersEntities db = new BuildersEntities();
         private BidJobEntities BidJobdb=new BidJobEntities();
 
-                   public Bid_Job ConvertIntoJobPost(Job_Post jobpost)
+         public Bid_Job ConvertIntoJobPost(Job_Post jobpost)
         {
             return new Bid_Job
             {
@@ -53,24 +53,26 @@ namespace BPS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Details([Bind(Include = "id")] Bid_Job bidJOb)
         {
+            bidJOb.Bid_user = Session["UserName"].ToString();
 
-            bool IsExist = BidJobdb.Bid_Job.Any(X => X.JobId == bidJOb.Id);
+            bool IsExist = (BidJobdb.Bid_Job.Any(X => X.JobId == bidJOb.Id)) && (BidJobdb.Bid_Job.Any(x => x.Bid_user == bidJOb.Bid_user));
 
             if (IsExist == true)
             {
-                 Content("<script language='javascript' type='text/javascript'>alert('You Already Apply this Job');</script>");
-                 return RedirectToAction("Details");
+                return RedirectToAction("Index");
+                
             }
             
             
             if (ModelState.IsValid)
             {
                 bidJOb.JobId = bidJOb.Id;
-                bidJOb.Bid_user= Session["UserName"].ToString();
+                
                 bidJOb.EntryDate = DateTime.Now;
                 BidJobdb.Bid_Job.Add(bidJOb);
                 BidJobdb.SaveChanges();
                 return RedirectToAction("Index");
+               
                
             }
             return View(bidJOb);
