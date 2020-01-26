@@ -59,8 +59,8 @@ namespace BPS.Controllers
 
             if (IsExist == true)
             {
-                 ViewBag.message= Content("<script language='javascript' type='text/javascript'>alert('You Already Apply this Job');</script>");
-                 return RedirectToAction("Details");
+                return RedirectToAction("Index");
+                
             }
             
             
@@ -72,6 +72,7 @@ namespace BPS.Controllers
                 BidJobdb.Bid_Job.Add(bidJOb);
                 BidJobdb.SaveChanges();
                 return RedirectToAction("Index");
+               
                
             }
             return View(bidJOb);
