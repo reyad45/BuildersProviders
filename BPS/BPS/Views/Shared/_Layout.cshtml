@@ -84,6 +84,7 @@
                         {
                             <li class="scroll">@Html.ActionLink("Create User", "Registration", "User")</li>
                         }
+                        <li class="scroll">@Html.ActionLink("Log Out", "login","User")</li>
                     }
                     @if (Session["username"] == null || (string)(Session["username"]) == "")
                     {

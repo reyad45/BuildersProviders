@@ -5,13 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/JobPost.css" rel="stylesheet" />
+
+     @if (Session["username"] != null || (string)(Session["username"]) != "")
+                    {
+                        int UserRole = Convert.ToInt16(Session["UserRole"]);
+                        if (UserRole == 1 || UserRole == 4)
+                        {
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-
+}
+}
 
 
 
@@ -29,7 +36,18 @@
                 <p><span class="glyphicon glyphicon-map-marker">  &nbsp;@Html.DisplayFor(modelItem => item.Address)</span></p>
                 <p><span class="glyphicon glyphicon-education"> &nbsp;Bachelor of Science (BSc) in Civil Engineering</span></p>
                 <h5><span class="glyphicon glyphicon-briefcase"></span> &nbsp; &nbsp; &nbsp;1 to 3 year(s)  <p class="text-right"><span class="glyphicon glyphicon-calendar">&nbsp;Application Deadline: Feb 30, 2020</p></h5>
-                <a href="#" class=""> @Html.ActionLink("View Job", "Details", new { id = item.id })</a>
+                <button class="btn btn-black float-left"> @Html.ActionLink("View Job", "Details", new { id = item.id, @class="btn btn-primary btn-block" })</button>
+                
+                @if (Session["username"] != null || (string)(Session["username"]) != "")
+                {
+                int UserRole = Convert.ToInt16(Session["UserRole"]);
+                if (UserRole == 1 || UserRole == 4)
+                {
+                <button class="btn btn-black float-left">@Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
+               <button class="btn btn-black float-left"> @Html.ActionLink("Delete", "Delete", new { id = item.id, @class = "btn btn-success" })</button>
+                }
+                }
+
 
             </div>
         </div>
@@ -37,15 +55,7 @@
                
     
 
-                    if (Session["username"] != null || (string)(Session["username"]) != "")
-                    {
-                        int UserRole = Convert.ToInt16(Session["UserRole"]);
-                        if (UserRole == 1 || UserRole == 3)
-                        {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                        }
-                    }
+                   
 
 
                     
