@@ -93,7 +93,7 @@ namespace BPS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Building_Name, build_id,Ser_id,Land_Size,Description,Address,Price,LocID")] Job_Post job_post)
+        public ActionResult Create([Bind(Include = "id,Building_Name, build_id,Ser_id,Land_Size,Description,Address,Price")] Job_Post job_post)
         {
             if (ModelState.IsValid)
             {

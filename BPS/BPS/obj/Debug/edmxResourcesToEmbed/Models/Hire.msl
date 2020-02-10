@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HireModelStoreContainer" CdmEntityContainer="HireEntities">
+    <EntitySetMapping Name="HireEngs">
+      <EntityTypeMapping TypeName="HireModel.HireEng">
+        <MappingFragment StoreEntitySet="HireEng">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="Eid" ColumnName="Eid" />
+          <ScalarProperty Name="RequestText" ColumnName="RequestText" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="Accept" ColumnName="Accept" />
+          <ScalarProperty Name="EngineerName" ColumnName="EngineerName" />
+          <ScalarProperty Name="engineerAddress" ColumnName="engineerAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -86,40 +86,35 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="scroll ">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="scroll"><a href="#services">Service</a></li>
-                    @if (Session["username"] != null || (string)(Session["username"]) != "")
+                    @if(Session["username"]==null || (string)(Session["username"])=="" )
                     {
-                        int UserRole = Convert.ToInt16(Session["UserRole"]);
-                        if (UserRole == 1 || UserRole == 2)
-                        {
-                            <li class="scroll">@Html.ActionLink("Engineer Info", "SaveEngInfo", "Engineerinfo")</li>
-                        }
+                        <li class="scroll">@Html.ActionLink("Engineer Info", "SaveEngInfo", "Engineerinfo")</li>
+                         <li class="scroll">@Html.ActionLink("Supplier", "Save", "Supplier")</li>
+                       <li class="scroll">@Html.ActionLink("Client Profile", "Profile", "Client")</li>
                     }
-
+                    
                     @if (Session["username"] != null || (string)(Session["username"]) != "")
                     {
                         int UserRole = Convert.ToInt16(Session["UserRole"]);
-                        if (UserRole == 1 || UserRole == 3)
-                        {
-                            <li class="scroll">@Html.ActionLink("Supplier", "Save", "Supplier")</li>
-                        }
+         
                          if (UserRole == 1 || UserRole == 4)
                         {
                             <li class="scroll ">@Html.ActionLink("Job Post", "", "JobPost")</li>
-                            <li class="scroll">@Html.ActionLink("Client Profile", "Profile", "Client")</li>
+                           
 
                         }
                         if (UserRole == 1 || UserRole == 2|| UserRole == 3)
                         {
                              <li class="scroll ">@Html.ActionLink("Bid Job", "Index", "JobPost")</li>
                         }
+                               if(UserRole == 4|| UserRole==1)
+                              {
+                                  <li class="scroll">@Html.ActionLink("Hire Engineer","Index", "Engineerinfo")</li>
+                              }
                      
                     }
                                    
 
-                   
-
-
-                  
 
                     <li class="scroll"><a href="#">Contact</a></li>
                     @if (Session["username"] != null || (string)(Session["username"]) != "")

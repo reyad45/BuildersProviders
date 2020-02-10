@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HireEng">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sid" Type="Int32" />
+    <Property Name="Eid" Type="Int32" />
+    <Property Name="RequestText" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="RequestDate" Type="DateTime" Precision="0" />
+    <Property Name="Accept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="engineerAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="HireEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HireEngs" EntityType="Self.HireEng" />
+  </EntityContainer>
+</Schema>

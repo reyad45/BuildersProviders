@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\ClientBLL.cs" />
     <Compile Include="BLL\EngineerBLL.cs" />
+    <Compile Include="BLL\HireBLL.cs" />
     <Compile Include="BLL\SupplierBLL.cs" />
     <Compile Include="BLL\UserBll.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Getway\ClientGetway.cs" />
     <Compile Include="Getway\EngineerGetway.cs" />
+    <Compile Include="Getway\HireGetway.cs" />
     <Compile Include="Getway\SupplierGetway.cs" />
     <Compile Include="Getway\UserGetway.cs" />
     <Compile Include="Getway\WebConfigratutionManager.cs" />
@@ -224,6 +226,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Engineers.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hire.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hire.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hire.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hire.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hire.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hire.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HireEng.cs">
+      <DependentUpon>Hire.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobPost.Context.cs">
@@ -383,6 +403,16 @@
       <DependentUpon>Engineers.edmx</DependentUpon>
       <LastGenOutput>Engineers.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Hire.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Hire.edmx</DependentUpon>
+      <LastGenOutput>Hire.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Hire.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Hire.edmx</DependentUpon>
+      <LastGenOutput>Hire.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\JobPost.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JobPost.edmx</DependentUpon>
@@ -432,6 +462,13 @@
     </EntityDeploy>
     <Content Include="Models\Bid_Job.edmx.diagram">
       <DependentUpon>Bid_Job.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Hire.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Hire.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Hire.edmx.diagram">
+      <DependentUpon>Hire.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -503,6 +540,7 @@
     <Content Include="Views\JobPost2\Details.cshtml" />
     <Content Include="Views\JobPost2\Edit.cshtml" />
     <Content Include="Views\JobPost2\Index.cshtml" />
+    <Content Include="Views\EngineerInfo\Hire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

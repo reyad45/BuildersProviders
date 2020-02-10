@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HireEng">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sid" Type="int" />
+    <Property Name="Eid" Type="int" />
+    <Property Name="RequestText" Type="varchar" MaxLength="400" />
+    <Property Name="RequestDate" Type="smalldatetime" />
+    <Property Name="Accept" Type="varchar" MaxLength="50" />
+    <Property Name="EngineerName" Type="varchar" MaxLength="50" />
+    <Property Name="engineerAddress" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityContainer Name="HireModelStoreContainer">
+    <EntitySet Name="HireEng" EntityType="Self.HireEng" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

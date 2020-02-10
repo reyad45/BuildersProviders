@@ -36,6 +36,55 @@ namespace BPS.Controllers
             return View(engineer);
         }
 
+        //Get Hire Request
+        public ActionResult Hire(int? id)
+        {
+            if(id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Engineer engineer = db.Engineers.Find(id);
+            HireEng hire = new HireEng();
+            hire.Eid = engineer.id;
+            hire.Sid = Convert.ToInt32( Session["UserID"]);
+            hire.EngineerName = engineer.engName;
+            hire.engineerAddress=engineer.engAdress;
+            if(engineer ==null)
+            {
+                return HttpNotFound();
+            }
+            return View(hire);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Hire(HireEng aHireEng)
+        {
+            Engineer engineer = db.Engineers.Find(aHireEng.Id);
+            aHireEng.Eid = engineer.id;
+            aHireEng.Sid = Convert.ToInt32(Session["userID"]);
+            aHireEng.EngineerName = engineer.engName;
+            aHireEng.engineerAddress = engineer.engAdress;
+
+            if(aHireEng.RequestText==null)
+            {
+                ViewBag.error = "Request Text doest not Empty!!!";
+                return View(aHireEng);
+            }
+
+            if(ModelState.IsValid)
+            {
+                
+
+                HireBLL aHire= new HireBLL();
+                ViewBag.message = aHire.RequestHire(aHireEng);
+                return View(aHireEng);
+            }
+     
+           return RedirectToAction("Index");
+
+        }
+
         // GET: /EngineerInfo/Create
         //public ActionResult Create()
         //{
@@ -87,7 +136,7 @@ namespace BPS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,engName,engEmail,engContact,engAbout,engAdress,engCountry,engGender,engPicture,engDetails,engProfile,engExperience,engEntryBy,engEntryDate")] Engineer engineer)
+        public ActionResult Edit([Bind(Include = "id,engName,engEmail,engContact,engAbout,engAdress,engCountry,engDetails")] Engineer engineer)
         {
             if (ModelState.IsValid)
             {

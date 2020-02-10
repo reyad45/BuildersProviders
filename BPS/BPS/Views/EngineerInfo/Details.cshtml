@@ -4,23 +4,35 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 
+
+        a:hover {
+            color: #fff;
+        }
+</style>
 <h2>Details</h2>
 
 <div>
     <h4>Engineer</h4>
 	<hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.engName)
+           Engineer Name
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.engName)
         </dd>
+     
 
         <dt>
-            @Html.DisplayNameFor(model => model.engEmail)
+            Email
         </dt>
 
         <dd>
@@ -28,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engContact)
+            Contact Number
         </dt>
 
         <dd>
@@ -36,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engAbout)
+           About
         </dt>
 
         <dd>
@@ -44,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engAdress)
+           Address
         </dt>
 
         <dd>
@@ -52,7 +64,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engCountry)
+            Country
         </dt>
 
         <dd>
@@ -60,23 +72,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engGender)
+            Gender
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.engGender)
         </dd>
 
+       
         <dt>
-            @Html.DisplayNameFor(model => model.engPicture)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.engPicture)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.engDetails)
+            Details
         </dt>
 
         <dd>
@@ -84,7 +89,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engProfile)
+            Profile
         </dt>
 
         <dd>
@@ -92,32 +97,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.engExperience)
+           Experience
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.engExperience)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.engEntryBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.engEntryBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.engEntryDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.engEntryDate)
-        </dd>
 
     </dl>
+    <div>
+        
+    </div>
+    <button type="submit" class="btn btn-primary btn-submit">@Html.ActionLink("Request for Hire Engineer", "Hire", new { id=Model.id})</button>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+@if (Session["username"] != null || (string)(Session["username"]) != "")
+                    {
+                        int UserRole = Convert.ToInt16(Session["UserRole"]);
+                        if (UserRole == 1 )
+                        {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) 
+                                                            
+                        }
+                        }
     @Html.ActionLink("Back to List", "Index")
 </p>

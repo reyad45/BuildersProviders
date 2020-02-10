@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HireEng">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sid" Type="int" />
+          <Property Name="Eid" Type="int" />
+          <Property Name="RequestText" Type="varchar" MaxLength="400" />
+          <Property Name="RequestDate" Type="smalldatetime" />
+          <Property Name="Accept" Type="varchar" MaxLength="50" />
+          <Property Name="EngineerName" Type="varchar" MaxLength="50" />
+          <Property Name="engineerAddress" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityContainer Name="HireModelStoreContainer">
+          <EntitySet Name="HireEng" EntityType="Self.HireEng" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HireEng">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sid" Type="Int32" />
+          <Property Name="Eid" Type="Int32" />
+          <Property Name="RequestText" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="RequestDate" Type="DateTime" Precision="0" />
+          <Property Name="Accept" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EngineerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="engineerAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="HireEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HireEngs" EntityType="Self.HireEng" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HireModelStoreContainer" CdmEntityContainer="HireEntities">
+          <EntitySetMapping Name="HireEngs">
+            <EntityTypeMapping TypeName="HireModel.HireEng">
+              <MappingFragment StoreEntitySet="HireEng">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="Eid" ColumnName="Eid" />
+                <ScalarProperty Name="RequestText" ColumnName="RequestText" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="Accept" ColumnName="Accept" />
+                <ScalarProperty Name="EngineerName" ColumnName="EngineerName" />
+                <ScalarProperty Name="engineerAddress" ColumnName="engineerAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
