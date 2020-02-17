@@ -46,25 +46,26 @@ namespace BPS.Models
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "Contact Number")]
         public string engContact { get; set; }
+
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "About")]
         public string engAbout { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+ 
         [Display(Name = "Address")]
         public string engAdress { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+  
         [Display(Name = "Country")]
         public string engCountry { get; set; }
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "Gender")]
         public string engGender { get; set; }
-        [Required]
+     
         [Display(Name = "Picture")]
         public byte[] engPicture{ get; set; }
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "Details")]
         public string engDetails { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+     
         [Display(Name = "Profile")]
         public string engProfile { get; set; }
         [Required(ErrorMessage = "This Field is Required")]

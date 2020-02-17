@@ -101,16 +101,24 @@ namespace BPS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveEngInfo(Engineer aEngineer)
         {
-            //bool isExist = db.Engineers.Any(x => x.engEmail == engineer.engEmail);
+            if (ModelState.IsValid)
+            {
+                bool isExist = db.Engineers.Any(x => x.engEmail == aEngineer.engEmail);
 
-            //if (isExist==true)
-            //{
-            //  ModelState.AddModelError("engEmail","Already Exist");
-            //}
-            EngineerBLL AEngineerBll = new EngineerBLL();
-       
+                if (isExist == true)
+                {
+                    ModelState.AddModelError("engEmail", "Already Exist");
+                    return View(aEngineer);
+                }
+                EngineerBLL AEngineerBll = new EngineerBLL();
+
                 ViewBag.Message = AEngineerBll.SaveEngProfile(aEngineer);
                 return RedirectToAction("Index");
+
+            }
+            else
+                return View(aEngineer);
+            
        
 
             //return View(aEngineer);

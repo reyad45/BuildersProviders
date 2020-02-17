@@ -23,11 +23,17 @@ namespace BPS.Controllers
         }
         SupplierBLL aSupplierBLL = new SupplierBLL();
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Supplier aSuppler)
         {
-            ViewBag.message = aSupplierBLL.SaveSupProfile(aSuppler);
-            
-            return View();
+            if (ModelState.IsValid)
+            {
+                ViewBag.message = aSupplierBLL.SaveSupProfile(aSuppler);
+
+                return View();
+            }
+            else
+                return View(aSuppler);
         }
 
 	}

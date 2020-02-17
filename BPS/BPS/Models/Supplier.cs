@@ -42,22 +42,22 @@ namespace BPS.Models
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "About")]
         public string supAbout { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+        
         [Display(Name = "Address")]
         public string supAdress { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+        
         [Display(Name = "Country")]
         public string supCountry { get; set; }
         [Required(ErrorMessage = "This Field is Required")]
         [Display(Name = "Gender")]
         public string supGender { get; set; }
-        [Required]
+        
         [Display(Name = "Picture")]
         public byte[] supPicture { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+        
         [Display(Name = "Details")]
         public string supDetails { get; set; }
-        [Required(ErrorMessage = "This Field is Required")]
+        
         [Display(Name = "Profile")]
         public string supProfile { get; set; }
         [Required(ErrorMessage = "This Field is Required")]
